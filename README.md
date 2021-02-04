@@ -3,6 +3,7 @@ The following modules were proposed
 1.login :
 The user is authenticated using phone number authentication.
 
+![Screenshot_2021-02-04-15-32-42-045_com zee chatApp](https://user-images.githubusercontent.com/43025057/106880987-00263980-6703-11eb-8756-01a61c9e20fb.jpg)
 
 2. Chat module :
 Chat are saved on firestore, and retrieved usign FirestoreRecyclerAdapter
