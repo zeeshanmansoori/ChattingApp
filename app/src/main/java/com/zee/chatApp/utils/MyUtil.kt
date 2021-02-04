@@ -15,12 +15,12 @@ import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 
 import androidx.fragment.app.FragmentActivity
-import com.example.anew.ui.admin.add.TAKE_IMAGE
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
+import com.zee.chatApp.view.profile.TAKE_IMAGE
 import java.io.ByteArrayOutputStream
 import java.net.URI
 import java.text.SimpleDateFormat
