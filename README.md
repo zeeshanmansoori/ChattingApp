@@ -1,12 +1,12 @@
 # ChattingApp
 The following modules were proposed
-1.login 
+1.login :
 The user is authenticated using phone number authentication.
 
-2. Chat module
-Chat are saved on firestore.
+2. Chat module :
+Chat are saved on firestore, and retrieved usign FirestoreRecyclerAdapter
 
-3. Update profile
+3. Update profile :
 This module is used to update the profile of the user.
 
 
