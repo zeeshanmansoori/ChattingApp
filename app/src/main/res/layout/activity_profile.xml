@@ -5,6 +5,11 @@ xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.profile.ProfileActivity">
 
 
+    <data>
+        <variable
+            name="user"
+            type="com.zee.chatApp.model.Fuser" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,14 +29,11 @@ xmlns:tools="http://schemas.android.com/tools"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/name_tag"
+        glideErrorSrc="@{@drawable/user}"
+        glideSrc="@{user.image}"
 
         />
 
-<!--
-glideSrc="@{user.image}"
-        glideErrorSrc="@{@drawable/user}"
-
--->
     <TextView
         android:id="@+id/name_tag"
         android:layout_width="wrap_content"
@@ -52,7 +54,7 @@ glideSrc="@{user.image}"
         tools:text="Zeeshan"
         android:textStyle="bold"
         android:fontFamily="cursive"
-
+        android:text="@{user.name}"
         android:lines="1"
         android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@id/name_tag"
@@ -61,8 +63,6 @@ glideSrc="@{user.image}"
         app:layout_constraintBaseline_toBaselineOf="@id/name_tag"
         android:paddingStart="10dp"
         />
-<!--
-android:text="@{user.name}"-->
     <TextView
         android:id="@+id/bio_tag"
         android:layout_width="wrap_content"
@@ -83,7 +83,7 @@ android:text="@{user.name}"-->
         tools:text="bio"
         android:textStyle="bold"
         android:fontFamily="cursive"
-
+        android:text="@{user.bio}"
         android:maxLines="5"
         android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@id/bio_tag"
@@ -93,8 +93,6 @@ android:text="@{user.name}"-->
         android:paddingStart="10dp"
         />
 
-<!--
-android:text="@{user.bio}"-->
 
 
 

@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -16,36 +17,48 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.zee.chatApp.R
 import com.zee.chatApp.databinding.ActivityProfileBinding
+import com.zee.chatApp.model.Fuser
+import com.zee.chatApp.utils.MyUtil
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 
-const val  STORAGE_REF = "user_images"
+const val STORAGE_REF = "user_images"
 const val USER_REF = "Users"
 const val TAKE_IMAGE = 223
 const val USER_IMAGE = "image"
-class ProfileActivity : AppCompatActivity() {
+
+class ProfileActivity : AppCompatActivity(){
 
     private var imageUri: Uri? = null
-    private lateinit var binding:ActivityProfileBinding
+    private lateinit var binding: ActivityProfileBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var storageRef: StorageReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_profile)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         firestore = FirebaseFirestore.getInstance()
         storageRef = FirebaseStorage.getInstance().getReference(STORAGE_REF)
 
+
+        binding.apply {
+            userImage.setOnClickListener {
+                if (MyUtil.checkCameraPermission(this@ProfileActivity))
+                    takePhoto()
+                else MyUtil.requestCameraPermission(this@ProfileActivity)
+            }
+
+        }
     }
 
     private fun takePhoto() {
-            val intent = Intent()
-            intent.action = Intent.ACTION_GET_CONTENT
-            intent.type = "image/*"
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
 
         startActivityForResult(intent, TAKE_IMAGE)
-            }
-
+    }
 
 
     private fun uploadImage(userId: String) {
@@ -76,7 +89,7 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        }
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -88,4 +101,5 @@ class ProfileActivity : AppCompatActivity() {
         }
 
     }
-}
+
+    }

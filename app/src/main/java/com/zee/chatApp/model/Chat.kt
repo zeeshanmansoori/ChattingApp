@@ -7,8 +7,3 @@ import java.util.*
 data class Chat(val name: String ="", val msg:String = "",
                 val date: Timestamp = Timestamp(Date()))
 
-data class fUser(
-    val name: String = "",
-    val phoneNo: String = "", var image: String = "",
-    val bio: String = ""
-)

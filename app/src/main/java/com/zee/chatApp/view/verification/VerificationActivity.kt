@@ -13,7 +13,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.zee.chatApp.R
 import com.zee.chatApp.databinding.ActivityVerificationBinding
-import com.zee.chatApp.model.fUser
+import com.zee.chatApp.model.Fuser
 import com.zee.chatApp.view.home.HomeActivity
 import com.zee.chatApp.view.profile.USER_REF
 
@@ -90,7 +90,7 @@ class VerificationActivity : AppCompatActivity() {
     private fun addToDb() {
 
         firestore.collection(USER_REF).document(binding.phoneNo.toString()).set(
-            fUser(name = intent.getStringExtra("name").toString(),phoneNo = binding.phoneNo.toString())
+            Fuser(name = intent.getStringExtra("name").toString(),phoneNo = binding.phoneNo.toString())
         ).addOnSuccessListener {
             Intent(this,HomeActivity::class.java).also {
                 startActivity(it)
