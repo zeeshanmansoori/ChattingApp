@@ -5,6 +5,8 @@ The user is authenticated using phone number authentication.
 
 ![Screenshot_2021-02-04-15-32-42-045_com zee chatApp](https://user-images.githubusercontent.com/43025057/106880987-00263980-6703-11eb-8756-01a61c9e20fb.jpg)
 
+![Screenshot_2021-02-04-15-33-28-370_com zee chatApp](https://user-images.githubusercontent.com/43025057/106880992-01576680-6703-11eb-8d6e-340e34929c0e.jpg)
+
 2. Chat module :
 Chat are saved on firestore, and retrieved usign FirestoreRecyclerAdapter
 
