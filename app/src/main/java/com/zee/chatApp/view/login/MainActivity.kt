@@ -1,4 +1,4 @@
-package com.zee.chatApp.view
+package com.zee.chatApp.view.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.zee.chatApp.R
 import com.zee.chatApp.databinding.ActivityMainBinding
@@ -29,11 +26,12 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
-        binding.login.setOnClickListener { view: View? ->
+        binding.login.setOnClickListener { 
             var phoneNumber = binding.phoneNo.text.toString().trim { it <= ' ' }
             phoneNumber = "+91$phoneNumber"
             Log.d(TAG, "OnButtonClicked:  phone number$phoneNumber")
             sendCode(phoneNumber)
+            binding.progressbar.visibility = View.VISIBLE
         }
     }
 
@@ -52,9 +50,7 @@ class MainActivity : AppCompatActivity() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
                 val user = FirebaseAuth.getInstance().currentUser
                 Log.d("TAG", "onVerificationCompleted")
-
-                //Prefs.put(getApplicationContext(), user);
-            }
+}
 
             override fun onVerificationFailed(e: FirebaseException) {
                 Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
@@ -64,8 +60,11 @@ class MainActivity : AppCompatActivity() {
             override fun onCodeSent(s: String, token: PhoneAuthProvider.ForceResendingToken) {
                 Log.d("TAG", "onCodeSent")
                 val intent = Intent(this@MainActivity, VerificationActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 intent.putExtra("String", s)
                 intent.putExtra("Token", token)
+                intent.putExtra("name",binding.name.text.toString())
                 intent.putExtra("phoneNumber", binding.phoneNo.text.toString().trim { it <= ' ' })
                 startActivity(intent)
             }

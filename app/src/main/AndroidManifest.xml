@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChattingApp">
         <activity android:name=".view.verification.VerificationActivity"></activity>
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.profile.ProfileActivity" />
-        <activity android:name=".view.login.OtpVerificationActivity" />
+
         <activity android:name=".view.home.HomeActivity" />
-        <activity android:name=".view.login.LoginActivity"></activity>
+
     </application>
 
 </manifest>
