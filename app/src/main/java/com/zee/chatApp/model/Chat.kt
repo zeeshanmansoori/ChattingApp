@@ -1,6 +1,11 @@
 package com.zee.chatApp.model
 
-data class Chat(val name: String ="", val msg:String = "",val date:String="")
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FieldValue
+import java.util.*
+
+data class Chat(val name: String ="", val msg:String = "",
+                val date: Timestamp = Timestamp(Date()))
 
 data class User(
     val name: String = "",

@@ -3,21 +3,23 @@ package com.zee.chatApp.view.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.zee.chatApp.R
 import com.zee.chatApp.adapter.HomeAdapter
 import com.zee.chatApp.databinding.ActivityHomeBinding
 import com.zee.chatApp.model.CHAT
 import com.zee.chatApp.model.Chat
 import com.zee.chatApp.view.profile.ProfileActivity
+import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -33,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
 
-        val query = firestore.collection(CHAT)
+        val query = firestore.collection(CHAT).orderBy("date",Query.Direction.DESCENDING)
 
         val firestoreRecyclerOptions = FirestoreRecyclerOptions.Builder<Chat>()
             .setQuery(query,Chat::class.java)
@@ -45,12 +47,10 @@ class HomeActivity : AppCompatActivity() {
 
             homeRecyclerView.apply {
                 setItemViewCacheSize(30)
-                val manager = LinearLayoutManager(applicationContext).apply {
-                    stackFromEnd = true
-                }.also {
-                    layoutManager = it
-                }
-
+                val manager = LinearLayoutManager(applicationContext)
+                manager.stackFromEnd = true
+                manager.reverseLayout = true
+                layoutManager = manager
                 adapter = homeAdapter
             }
 
@@ -66,11 +66,15 @@ class HomeActivity : AppCompatActivity() {
 
     private fun sendChat(text: String) {
         //firebaseAuth.currentUser!!.displayName.toString()
-        val chat = Chat("zee",text,"12/10/14")
+        val chat = Chat("zee",text,
+            Timestamp(Date())
+            )
+
+        binding.enterText.text.clear()
         firestore.collection(CHAT)
             .add(chat)
             .addOnSuccessListener {
-                binding.enterText.text.clear()
+
             }
 
     }

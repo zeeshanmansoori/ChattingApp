@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.login.OtpVerificationActivity"
-        >
+        tools:context=".view.verification.VerificationActivity">
+
         <TextView
             android:id="@+id/otp_title"
             android:layout_width="wrap_content"
@@ -53,7 +52,6 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:padding="16dp"
-            android:text="@{@string/phone_no(phoneNo)}"
             android:textSize="26sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +90,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/otp_text_view"
             app:layout_goneMarginTop="50dp" />
+
+
 
 
         <ProgressBar
