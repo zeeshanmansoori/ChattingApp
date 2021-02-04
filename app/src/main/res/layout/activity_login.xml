@@ -9,7 +9,8 @@ xmlns:tools="http://schemas.android.com/tools">
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".Auth.SignInUser">
+    tools:context=".view.login.LoginActivity"
+    >
 
     <LinearLayout
         android:id="@+id/container"

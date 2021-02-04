@@ -7,14 +7,51 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.home.HomeActivity">
+        tools:context=".view.home.HomeActivity"
+        >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/last_container"
+            tools:listitem="@layout/single_chat_layout_right"
+            app:layout_constraintTop_toTopOf="parent"
             />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/last_container"
+            android:padding="7dp"
+            >
+            <EditText
+                android:id="@+id/enter_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:hint="Enter message"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/send_btn"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/send_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="send"
+                android:layout_margin="5dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/enter_text"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

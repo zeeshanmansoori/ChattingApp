@@ -52,7 +52,6 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:maxLength="13"
             android:padding="16dp"
             android:text="@{@string/phone_no(phoneNo)}"
             android:textSize="26sp"

@@ -1,4 +1,4 @@
-package com.zee.chattingapp
+package com.zee.chatApp
 
 import org.junit.Test
 

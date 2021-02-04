@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.profile.ProfileActivity">
+
+<data>
+    <variable
+        name="user"
+        type="com.zee.chatApp.model.User" />
+
+</data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/user_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:backgroundTint="@color/partial_black"
+        tools:src="@drawable/user"
+        glideSrc="@{user.image}"
+        glideErrorSrc="@{@drawable/user}"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/name_tag"
+
+        />
+
+    <TextView
+        android:id="@+id/name_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_image"
+        android:text="Name"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/user_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Zeeshan"
+        android:textStyle="bold"
+        android:fontFamily="cursive" android:text="@{user.name}"
+        android:lines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/name_tag"
+        app:layout_constraintTop_toBottomOf="@id/user_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/name_tag"
+        android:paddingStart="10dp"
+        />
+
+    <TextView
+        android:id="@+id/bio_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_tag"
+        android:text="Bio"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/bio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="bio"
+        android:textStyle="bold"
+        android:fontFamily="cursive" android:text="@{user.bio}"
+        android:maxLines="5"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/bio_tag"
+        app:layout_constraintTop_toBottomOf="@id/user_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/bio_tag"
+        android:paddingStart="10dp"
+        />
+
+
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="23dp"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_check"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

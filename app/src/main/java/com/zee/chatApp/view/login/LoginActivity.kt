@@ -1,13 +1,13 @@
-package com.zee.chattingapp.view.login
+package com.zee.chatApp.view.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
-import com.zee.chattingapp.R
-import com.zee.chattingapp.databinding.ActivityLoginBinding
-import com.zee.chattingapp.view.home.HomeActivity
+import com.zee.chatApp.R
+import com.zee.chatApp.databinding.ActivityLoginBinding
+import com.zee.chatApp.view.home.HomeActivity
 
 
 class LoginActivity : AppCompatActivity() {

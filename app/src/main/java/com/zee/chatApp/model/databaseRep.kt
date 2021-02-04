@@ -1,4 +1,4 @@
-package com.zee.chattingapp.firebaseRep
+package com.zee.chatApp.model
 
 import com.google.firebase.firestore.FirebaseFirestore
 
