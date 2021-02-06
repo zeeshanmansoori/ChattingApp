@@ -114,6 +114,11 @@ class HomeActivity : AppCompatActivity() {
         super.onStart()
         homeAdapter.startListening()
     }
+    
+    override fun onStop(){
+        super.onStop()
+        homeAdapter.stopListening()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.home_menu,menu)
